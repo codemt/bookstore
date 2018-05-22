@@ -28,3 +28,10 @@ module.exports.getGenres =   function(callback,limit){
 
 
 }
+
+// Post a Genre...
+module.exports.addGenre = function(genre,callback){
+
+        Genre.create(genre,callback);
+
+}

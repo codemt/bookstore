@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(bodyParser.json());
 Genre = require('./models/genre');
 Book  = require('./models/book');
 
@@ -16,7 +17,7 @@ app.get('/',function(req,res){
         res.send('Please use /api/books or /api/genres');
 
 });
-app.get('/api/genres',function(req,res){
+app.get('/api/genre',function(req,res){
         
         Genre.getGenres(function(err,genres){
 
@@ -25,6 +26,18 @@ app.get('/api/genres',function(req,res){
                         throw err;
                 }
                 res.json(genres);
+
+        });
+
+});
+app.post('/api/genre/add',function(req,res){
+        var genre = req.body;
+        Genre.addGenre(genre,function(err,genre){
+
+                if(err){
+                        throw err;
+                }
+                res.json(genre);
 
         });
 
@@ -55,6 +68,19 @@ app.get('/api/books/:_id',function(req,res){
         });
 
 });
+app.post('/api/books/add',function(req,res){
+        var book = req.body;
+        Book.addBook(book,function(err,book){
+
+                if(err){
+                        throw err;
+                }
+                res.json(book);
+
+        });
+
+});
+
 
 app.listen(3000);
 console.log('Running on port 3000...');

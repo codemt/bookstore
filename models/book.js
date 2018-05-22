@@ -63,3 +63,11 @@ module.exports.getBookById =   function(id,callback){
 
 
 }
+
+// Post a Book.
+module.exports.addBook =  function(book,callback){
+
+    Book.create(book,callback);
+
+
+}
