@@ -71,3 +71,11 @@ module.exports.addBook =  function(book,callback){
 
 
 }
+
+// update a book..
+module.exports.updateBook =  function(book,callback){
+
+    Book.create(book,callback);
+
+
+}
